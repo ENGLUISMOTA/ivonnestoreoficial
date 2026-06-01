@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
       font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -25,356 +32,651 @@
       padding: 1rem;
       background: linear-gradient(135deg, #fff4ec 0%, #f1f5f9 100%);
     }
+
     .login-card {
       background: #fff;
       border-radius: 20px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
       padding: 2.5rem 2rem;
       width: 100%;
       max-width: 400px;
       text-align: center;
     }
-    .login-logo { font-size: 2rem; font-weight: 800; color: #FC6200; letter-spacing: -1px; margin-bottom: 0.25rem; }
-    .login-sub { color: #64748b; font-size: 0.9rem; margin-bottom: 2rem; }
-    .login-card label { display: block; text-align: left; font-size: 0.85rem; font-weight: 600; color: #475569; margin-bottom: 0.35rem; }
+
+    .login-logo {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #FC6200;
+      letter-spacing: -1px;
+      margin-bottom: 0.25rem;
+    }
+
+    .login-sub {
+      color: #64748b;
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+    }
+
+    .login-card label {
+      display: block;
+      text-align: left;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #475569;
+      margin-bottom: 0.35rem;
+    }
+
     .login-card input {
-      width: 100%; padding: 0.75rem 1rem;
-      border: 1.5px solid #e2e8f0; border-radius: 8px;
-      font-size: 0.95rem; font-family: 'DM Sans', sans-serif;
-      margin-bottom: 1rem; outline: none; transition: border-color .2s;
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-family: 'DM Sans', sans-serif;
+      margin-bottom: 1rem;
+      outline: none;
+      transition: border-color .2s;
     }
-    .login-card input:focus { border-color: #FC6200; }
+
+    .login-card input:focus {
+      border-color: #FC6200;
+    }
+
     .btn-primary {
-      width: 100%; background: #FC6200; color: #fff;
-      border: none; border-radius: 8px; padding: 0.85rem;
-      font-size: 1rem; font-weight: 700; font-family: 'DM Sans', sans-serif;
-      cursor: pointer; transition: background .2s;
+      width: 100%;
+      background: #FC6200;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 0.85rem;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+      transition: background .2s;
     }
-    .btn-primary:hover { background: #e05600; }
-    #login-error { color: #dc2626; font-size: 0.85rem; margin-top: 0.75rem; display: none; }
+
+    .btn-primary:hover {
+      background: #e05600;
+    }
+
+    #login-error {
+      color: #dc2626;
+      font-size: 0.85rem;
+      margin-top: 0.75rem;
+      display: none;
+    }
 
     /* DASHBOARD */
-    #dashboard { display: none; }
+    #dashboard {
+      display: none;
+    }
 
     header {
       background: #fff;
       border-bottom: 1px solid #e2e8f0;
       padding: 1rem 1.5rem;
-      display: flex; align-items: center; justify-content: space-between;
-      position: sticky; top: 0; z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
-    .header-brand { font-size: 1.2rem; font-weight: 800; color: #FC6200; }
-    .header-right { display: flex; gap: 0.75rem; align-items: center; }
-    .badge-user {
-      background: #FFF4EC; color: #FC6200;
-      font-size: 0.8rem; font-weight: 600;
-      padding: 0.3rem 0.75rem; border-radius: 99px;
-    }
-    .btn-logout {
-      background: transparent; border: 1.5px solid #e2e8f0;
-      border-radius: 8px; padding: 0.4rem 0.9rem;
-      font-size: 0.85rem; font-family: 'DM Sans', sans-serif;
-      cursor: pointer; color: #64748b; transition: all .2s;
-    }
-    .btn-logout:hover { border-color: #dc2626; color: #dc2626; }
 
-    main { padding: 1.5rem; max-width: 1200px; margin: 0 auto; }
+    .header-brand {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #FC6200;
+    }
+
+    .header-right {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .badge-user {
+      background: #FFF4EC;
+      color: #FC6200;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.3rem 0.75rem;
+      border-radius: 99px;
+    }
+
+    .btn-logout {
+      background: transparent;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 0.4rem 0.9rem;
+      font-size: 0.85rem;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+      color: #64748b;
+      transition: all .2s;
+    }
+
+    .btn-logout:hover {
+      border-color: #dc2626;
+      color: #dc2626;
+    }
+
+    main {
+      padding: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
     /* STATS */
     .stats-row {
-      display: grid; grid-template-columns: repeat(3,1fr);
-      gap: 1rem; margin-bottom: 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 1.5rem;
     }
-    @media(max-width:500px) { .stats-row { grid-template-columns:1fr; } }
+
+    @media(max-width:500px) {
+      .stats-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
     .stat-card {
-      background: #fff; border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-      padding: 1.25rem; text-align: center;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      padding: 1.25rem;
+      text-align: center;
     }
-    .stat-number { font-size: 2rem; font-weight: 800; color: #FC6200; }
-    .stat-label  { font-size: 0.8rem; color: #64748b; margin-top: 0.25rem; font-weight: 500; }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #FC6200;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: #64748b;
+      margin-top: 0.25rem;
+      font-weight: 500;
+    }
 
     /* TABLE */
     .table-card {
-      background: #fff; border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06); overflow: hidden;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      overflow: hidden;
     }
+
     .table-header {
-      padding: 1.25rem 1.5rem; border-bottom: 1px solid #f1f5f9;
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 0.75rem;
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
     }
-    .table-header h2 { font-size: 1rem; font-weight: 700; color: #1e293b; }
-    .table-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+    .table-header h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #1e293b;
+    }
+
+    .table-actions {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
     .btn-secondary {
-      background: #f1f5f9; border: none; border-radius: 8px;
-      padding: 0.55rem 1rem; font-size: 0.85rem; font-weight: 600;
+      background: #f1f5f9;
+      border: none;
+      border-radius: 8px;
+      padding: 0.55rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
       font-family: 'DM Sans', sans-serif;
-      cursor: pointer; color: #475569; transition: background .2s;
+      cursor: pointer;
+      color: #475569;
+      transition: background .2s;
     }
-    .btn-secondary:hover { background: #e2e8f0; }
+
+    .btn-secondary:hover {
+      background: #e2e8f0;
+    }
+
     .btn-export {
-      background: #FC6200; color: #fff; border: none; border-radius: 8px;
-      padding: 0.55rem 1rem; font-size: 0.85rem; font-weight: 600;
+      background: #FC6200;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 0.55rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
       font-family: 'DM Sans', sans-serif;
-      cursor: pointer; transition: background .2s;
+      cursor: pointer;
+      transition: background .2s;
     }
-    .btn-export:hover { background: #e05600; }
-    .search-row { padding: 0.75rem 1.5rem; border-bottom: 1px solid #f1f5f9; }
+
+    .btn-export:hover {
+      background: #e05600;
+    }
+
+    .search-row {
+      padding: 0.75rem 1.5rem;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
     .search-row input {
-      width: 100%; max-width: 360px; padding: 0.6rem 1rem;
-      border: 1.5px solid #e2e8f0; border-radius: 8px;
-      font-size: 0.9rem; font-family: 'DM Sans', sans-serif; outline: none;
+      width: 100%;
+      max-width: 360px;
+      padding: 0.6rem 1rem;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-family: 'DM Sans', sans-serif;
+      outline: none;
     }
-    .search-row input:focus { border-color: #FC6200; }
-    .table-wrap { overflow-x: auto; }
-    table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+
+    .search-row input:focus {
+      border-color: #FC6200;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+    }
+
     thead th {
-      background: #f8fafc; padding: 0.75rem 1rem; text-align: left;
-      font-size: 0.78rem; font-weight: 700; color: #64748b;
-      text-transform: uppercase; letter-spacing: 0.04em;
-      border-bottom: 1px solid #e2e8f0; white-space: nowrap;
+      background: #f8fafc;
+      padding: 0.75rem 1rem;
+      text-align: left;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      border-bottom: 1px solid #e2e8f0;
+      white-space: nowrap;
     }
-    tbody tr { border-bottom: 1px solid #f1f5f9; transition: background .1s; }
-    tbody tr:hover { background: #f8fafc; }
-    tbody td { padding: 0.85rem 1rem; vertical-align: middle; }
-    .td-coupon { font-family: 'Courier New', monospace; font-weight: 700; color: #FC6200; letter-spacing: 1px; }
+
+    tbody tr {
+      border-bottom: 1px solid #f1f5f9;
+      transition: background .1s;
+    }
+
+    tbody tr:hover {
+      background: #f8fafc;
+    }
+
+    tbody td {
+      padding: 0.85rem 1rem;
+      vertical-align: middle;
+    }
+
+    .td-coupon {
+      font-family: 'Courier New', monospace;
+      font-weight: 700;
+      color: #FC6200;
+      letter-spacing: 1px;
+    }
+
     .btn-edit-coupon {
-      background: #FFF4EC; border: 1px solid #ffdcc4; border-radius: 6px;
-      padding: 0.3rem 0.65rem; font-size: 0.78rem; font-weight: 600;
-      color: #FC6200; cursor: pointer; transition: all .15s; margin-left: 0.5rem;
+      background: #FFF4EC;
+      border: 1px solid #ffdcc4;
+      border-radius: 6px;
+      padding: 0.3rem 0.65rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #FC6200;
+      cursor: pointer;
+      transition: all .15s;
+      margin-left: 0.5rem;
     }
-    .btn-edit-coupon:hover { background: #ffe7d6; }
-    .badge-marketing { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 99px; font-size: 0.75rem; font-weight: 600; }
-    .badge-yes { background: #dcfce7; color: #15803d; }
-    .badge-no  { background: #fee2e2; color: #dc2626; }
-    .empty-state { text-align: center; padding: 3rem 1rem; color: #94a3b8; }
-    .empty-state p { margin-top: 0.5rem; font-size: 0.9rem; }
+
+    .btn-edit-coupon:hover {
+      background: #ffe7d6;
+    }
+
+    .badge-marketing {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      border-radius: 99px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .badge-yes {
+      background: #dcfce7;
+      color: #15803d;
+    }
+
+    .badge-no {
+      background: #fee2e2;
+      color: #dc2626;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: #94a3b8;
+    }
+
+    .empty-state p {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+    }
 
     /* MODAL */
     .modal-overlay {
-      display: none; position: fixed; inset: 0;
-      background: rgba(0,0,0,0.4); z-index: 100;
-      align-items: center; justify-content: center; padding: 1rem;
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
     }
-    .modal-overlay.open { display: flex; }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
     .modal {
-      background: #fff; border-radius: 14px; padding: 2rem;
-      width: 100%; max-width: 440px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+      background: #fff;
+      border-radius: 14px;
+      padding: 2rem;
+      width: 100%;
+      max-width: 440px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
     }
-    .modal h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.25rem; }
-    .modal p  { font-size: 0.85rem; color: #64748b; margin-bottom: 1.25rem; }
-    .modal label { font-size: 0.82rem; font-weight: 600; color: #475569; display: block; margin-bottom: 0.35rem; }
+
+    .modal h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .modal p {
+      font-size: 0.85rem;
+      color: #64748b;
+      margin-bottom: 1.25rem;
+    }
+
+    .modal label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #475569;
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+
     .modal input {
-      width: 100%; padding: 0.7rem 1rem;
-      border: 1.5px solid #e2e8f0; border-radius: 8px;
-      font-size: 1rem; font-family: 'Courier New', monospace;
-      font-weight: 700; text-transform: uppercase; outline: none; letter-spacing: 1px;
+      width: 100%;
+      padding: 0.7rem 1rem;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: 'Courier New', monospace;
+      font-weight: 700;
+      text-transform: uppercase;
+      outline: none;
+      letter-spacing: 1px;
     }
-    .modal input:focus { border-color: #FC6200; }
-    .modal-actions { display: flex; gap: 0.75rem; margin-top: 1.25rem; justify-content: flex-end; }
+
+    .modal input:focus {
+      border-color: #FC6200;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+      justify-content: flex-end;
+    }
+
     .btn-cancel {
-      background: #f1f5f9; border: none; border-radius: 8px;
-      padding: 0.65rem 1.2rem; cursor: pointer; font-weight: 600;
-      font-family: 'DM Sans', sans-serif; color: #475569;
+      background: #f1f5f9;
+      border: none;
+      border-radius: 8px;
+      padding: 0.65rem 1.2rem;
+      cursor: pointer;
+      font-weight: 600;
+      font-family: 'DM Sans', sans-serif;
+      color: #475569;
     }
+
     .btn-confirm {
-      background: #FC6200; color: #fff; border: none; border-radius: 8px;
-      padding: 0.65rem 1.2rem; cursor: pointer; font-weight: 600;
+      background: #FC6200;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 0.65rem 1.2rem;
+      cursor: pointer;
+      font-weight: 600;
       font-family: 'DM Sans', sans-serif;
     }
-    .btn-confirm:hover { background: #e05600; }
+
+    .btn-confirm:hover {
+      background: #e05600;
+    }
 
     .back-link {
-      display: inline-flex; align-items: center; gap: 0.35rem;
-      font-size: 0.85rem; color: #64748b; text-decoration: none;
-      padding: 0.4rem 0.9rem; border: 1.5px solid #e2e8f0;
-      border-radius: 8px; transition: all .2s; font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.85rem;
+      color: #64748b;
+      text-decoration: none;
+      padding: 0.4rem 0.9rem;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 8px;
+      transition: all .2s;
+      font-weight: 500;
     }
-    .back-link:hover { border-color: #FC6200; color: #FC6200; }
+
+    .back-link:hover {
+      border-color: #FC6200;
+      color: #FC6200;
+    }
   </style>
   <script src="env.js"></script>
   <script src="config.js"></script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </head>
+
 <body>
 
-<!-- LOGIN -->
-<div id="login-screen">
-  <div class="login-card">
-    <div class="login-logo">Ivonne Store</div>
-    <div class="login-sub">Painel Administrativo</div>
-    <div>
-      <label for="input-user">Usuário</label>
-      <input type="text" id="input-user" placeholder="admin" autocomplete="username">
+  <!-- LOGIN -->
+  <div id="login-screen">
+    <div class="login-card">
+      <div class="login-logo">Ivonne Store</div>
+      <div class="login-sub">Painel Administrativo</div>
+      <div>
+        <label for="input-user">Usuário</label>
+        <input type="text" id="input-user" placeholder="admin" autocomplete="username">
+      </div>
+      <div>
+        <label for="input-pass">Senha</label>
+        <input type="password" id="input-pass" placeholder="••••••••" autocomplete="current-password">
+      </div>
+      <button class="btn-primary" onclick="doLogin()">Entrar</button>
+      <div id="login-error">Usuário ou senha incorretos.</div>
     </div>
-    <div>
-      <label for="input-pass">Senha</label>
-      <input type="password" id="input-pass" placeholder="••••••••" autocomplete="current-password">
-    </div>
-    <button class="btn-primary" onclick="doLogin()">Entrar</button>
-    <div id="login-error">Usuário ou senha incorretos.</div>
   </div>
-</div>
 
-<!-- DASHBOARD -->
-<div id="dashboard">
-  <header>
-    <span class="header-brand">Ivonne Store Admin</span>
-    <div class="header-right">
-      <a href="index.html" class="back-link">← Site</a>
-      <span class="badge-user" id="badge-username"></span>
-      <button class="btn-logout" onclick="doLogout()">Sair</button>
-    </div>
-  </header>
-
-  <main>
-    <!-- Stats -->
-    <div class="stats-row">
-      <div class="stat-card">
-        <div class="stat-number" id="stat-total">—</div>
-        <div class="stat-label">Cadastros totais</div>
+  <!-- DASHBOARD -->
+  <div id="dashboard">
+    <header>
+      <span class="header-brand">Ivonne Store Admin</span>
+      <div class="header-right">
+        <a href="index.html" class="back-link">← Site</a>
+        <span class="badge-user" id="badge-username"></span>
+        <button class="btn-logout" onclick="doLogout()">Sair</button>
       </div>
-      <div class="stat-card">
-        <div class="stat-number" id="stat-today">—</div>
-        <div class="stat-label">Hoje</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number" id="stat-marketing">—</div>
-        <div class="stat-label">Aceitaram marketing</div>
-      </div>
-    </div>
+    </header>
 
-
-        <!-- Table -->
-    <div class="table-card">
-      <div class="table-header">
-        <h2>👥 Clientes Cadastrados</h2>
-        <div class="table-actions">
-          <button class="btn-secondary" onclick="loadRegistrations()">↻ Atualizar</button>
-          <button class="btn-export" onclick="exportCSV()">⬇ Exportar CSV</button>
+    <main>
+      <!-- Stats -->
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-number" id="stat-total">—</div>
+          <div class="stat-label">Cadastros totais</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="stat-today">—</div>
+          <div class="stat-label">Hoje</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="stat-marketing">—</div>
+          <div class="stat-label">Aceitaram marketing</div>
         </div>
       </div>
-      <div class="search-row">
-        <input type="text" id="search-input" placeholder="Buscar por nome, WhatsApp ou Instagram…" oninput="filterTable()">
-      </div>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Nome</th>
-              <th>WhatsApp</th>
-              <th>Instagram</th>
-              <th>Cupom</th>
-              <th>Marketing</th>
-              <th>Data</th>
-            </tr>
-          </thead>
-          <tbody id="table-body">
-            <tr><td colspan="7" style="text-align:center;padding:2rem;color:#94a3b8;">Carregando…</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </main>
-</div>
 
-<!-- Modal edição de cupom -->
-<div class="modal-overlay" id="edit-modal">
-  <div class="modal">
-    <h3>Editar código do cupom</h3>
-    <p id="modal-client-name">Cliente: —</p>
-    <label for="modal-coupon-input">Novo código</label>
-    <input type="text" id="modal-coupon-input" maxlength="20" oninput="this.value=this.value.toUpperCase()">
-    <div class="modal-actions">
-      <button class="btn-cancel" onclick="closeModal()">Cancelar</button>
-      <button class="btn-confirm" onclick="confirmEdit()">Salvar</button>
+
+      <!-- Table -->
+      <div class="table-card">
+        <div class="table-header">
+          <h2>👥 Clientes Cadastrados</h2>
+          <div class="table-actions">
+            <button class="btn-secondary" onclick="loadRegistrations()">↻ Atualizar</button>
+            <button class="btn-export" onclick="exportCSV()">⬇ Exportar CSV</button>
+          </div>
+        </div>
+        <div class="search-row">
+          <input type="text" id="search-input" placeholder="Buscar por nome, WhatsApp ou Instagram…"
+            oninput="filterTable()">
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Nome</th>
+                <th>WhatsApp</th>
+                <th>Instagram</th>
+                <th>Cupom</th>
+                <th>Marketing</th>
+                <th>Data</th>
+              </tr>
+            </thead>
+            <tbody id="table-body">
+              <tr>
+                <td colspan="7" style="text-align:center;padding:2rem;color:#94a3b8;">Carregando…</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal edição de cupom -->
+  <div class="modal-overlay" id="edit-modal">
+    <div class="modal">
+      <h3>Editar código do cupom</h3>
+      <p id="modal-client-name">Cliente: —</p>
+      <label for="modal-coupon-input">Novo código</label>
+      <input type="text" id="modal-coupon-input" maxlength="20" oninput="this.value=this.value.toUpperCase()">
+      <div class="modal-actions">
+        <button class="btn-cancel" onclick="closeModal()">Cancelar</button>
+        <button class="btn-confirm" onclick="confirmEdit()">Salvar</button>
+      </div>
     </div>
   </div>
-</div>
 
-<script>
-  const SUPABASE_URL = CONFIG.supabase.url;
-  const SUPABASE_KEY = CONFIG.supabase.anonKey;
+  <script>
+    const SUPABASE_URL = CONFIG.supabase.url;
+    const SUPABASE_KEY = CONFIG.supabase.anonKey;
 
-  const USERS = [
-    { user: CONFIG.admin.user, pass: CONFIG.admin.pass, label: 'Admin' },
-    { user: 'funcionario',     pass: CONFIG.admin.pass, label: 'Funcionário' },
-  ];
+    const USERS = [
+      { user: CONFIG.admin.user, pass: CONFIG.admin.pass, label: 'Admin' },
+      { user: 'funcionario', pass: CONFIG.admin.pass, label: 'Funcionário' },
+    ];
 
-  let allData = [];
-  let editingId = null;
+    let allData = [];
+    let editingId = null;
 
-  function doLogin() {
-    const u = document.getElementById('input-user').value.trim();
-    const p = document.getElementById('input-pass').value;
-    const found = USERS.find(x => x.user === u && x.pass === p);
-    if (!found) {
-      document.getElementById('login-error').style.display = 'block';
-      return;
-    }
-    sessionStorage.setItem('ivonne_user', found.label);
-    document.getElementById('login-screen').style.display = 'none';
-    document.getElementById('dashboard').style.display = 'block';
-    document.getElementById('badge-username').textContent = found.label;
-    loadRegistrations();
-  }
-
-  function doLogout() {
-    sessionStorage.removeItem('ivonne_user');
-    location.reload();
-  }
-
-  window.addEventListener('DOMContentLoaded', () => {
-    const saved = sessionStorage.getItem('ivonne_user');
-    if (saved) {
+    function doLogin() {
+      const u = document.getElementById('input-user').value.trim();
+      const p = document.getElementById('input-pass').value;
+      const found = USERS.find(x => x.user === u && x.pass === p);
+      if (!found) {
+        document.getElementById('login-error').style.display = 'block';
+        return;
+      }
+      sessionStorage.setItem('ivonne_user', found.label);
       document.getElementById('login-screen').style.display = 'none';
       document.getElementById('dashboard').style.display = 'block';
-      document.getElementById('badge-username').textContent = saved;
-        loadRegistrations();
+      document.getElementById('badge-username').textContent = found.label;
+      loadRegistrations();
     }
-    document.getElementById('input-pass').addEventListener('keydown', e => {
-      if (e.key === 'Enter') doLogin();
-    });
-    document.getElementById('input-user').addEventListener('keydown', e => {
-      if (e.key === 'Enter') document.getElementById('input-pass').focus();
-    });
-  });
 
-  async function loadRegistrations() {
-    const tbody = document.getElementById('table-body');
-    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:2rem;color:#94a3b8;">Carregando…</td></tr>';
-    try {
-      const res = await fetch(
-        `${SUPABASE_URL}/rest/v1/coupon_registrations?select=*&order=created_at.desc`,
-        { headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` } }
-      );
-      if (!res.ok) throw new Error(await res.text());
-      allData = await res.json();
-      renderTable(allData);
-      updateStats(allData);
-    } catch (err) {
-      tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;padding:2rem;color:#dc2626;">
+    function doLogout() {
+      sessionStorage.removeItem('ivonne_user');
+      location.reload();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const saved = sessionStorage.getItem('ivonne_user');
+      if (saved) {
+        document.getElementById('login-screen').style.display = 'none';
+        document.getElementById('dashboard').style.display = 'block';
+        document.getElementById('badge-username').textContent = saved;
+        loadRegistrations();
+      }
+      document.getElementById('input-pass').addEventListener('keydown', e => {
+        if (e.key === 'Enter') doLogin();
+      });
+      document.getElementById('input-user').addEventListener('keydown', e => {
+        if (e.key === 'Enter') document.getElementById('input-pass').focus();
+      });
+    });
+
+    async function loadRegistrations() {
+      const tbody = document.getElementById('table-body');
+      tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:2rem;color:#94a3b8;">Carregando…</td></tr>';
+      try {
+        const res = await fetch(
+          `${SUPABASE_URL}/rest/v1/coupon_registrations?select=*&order=created_at.desc`,
+          { headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` } }
+        );
+        if (!res.ok) throw new Error(await res.text());
+        allData = await res.json();
+        renderTable(allData);
+        updateStats(allData);
+      } catch (err) {
+        tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;padding:2rem;color:#dc2626;">
         Erro ao carregar: ${err.message}
       </td></tr>`;
+      }
     }
-  }
 
-  function renderTable(data) {
-    const tbody = document.getElementById('table-body');
-    if (!data.length) {
-      tbody.innerHTML = `<tr><td colspan="7"><div class="empty-state">📋 <p>Nenhum cadastro encontrado.</p></div></td></tr>`;
-      return;
-    }
-    tbody.innerHTML = data.map((r, i) => `
+    function renderTable(data) {
+      const tbody = document.getElementById('table-body');
+      if (!data.length) {
+        tbody.innerHTML = `<tr><td colspan="7"><div class="empty-state">📋 <p>Nenhum cadastro encontrado.</p></div></td></tr>`;
+        return;
+      }
+      tbody.innerHTML = data.map((r, i) => `
       <tr>
         <td style="color:#94a3b8;font-size:0.78rem;">${i + 1}</td>
         <td style="font-weight:600;">${esc(r.name)}</td>
-        <td><a href="https://wa.me/55${r.whatsapp.replace(/\D/g,'')}" target="_blank"
+        <td><a href="https://wa.me/55${r.whatsapp.replace(/\D/g, '')}" target="_blank"
                style="color:#25d366;font-weight:600;text-decoration:none;">📱 ${esc(r.whatsapp)}</a></td>
-        <td><a href="https://instagram.com/${r.instagram.replace('@','')}" target="_blank"
-               style="color:#e1306c;font-weight:600;text-decoration:none;">@${esc(r.instagram.replace('@',''))}</a></td>
+        <td><a href="https://instagram.com/${r.instagram.replace('@', '')}" target="_blank"
+               style="color:#e1306c;font-weight:600;text-decoration:none;">@${esc(r.instagram.replace('@', ''))}</a></td>
         <td>
           <span class="td-coupon">${esc(r.coupon_code)}</span>
           <button class="btn-edit-coupon" onclick="openModal('${r.id}','${esc(r.name)}','${esc(r.coupon_code)}')">✏️</button>
@@ -383,87 +685,88 @@
         <td style="color:#64748b;white-space:nowrap;font-size:0.82rem;">${formatDate(r.created_at)}</td>
       </tr>
     `).join('');
-  }
-
-  function updateStats(data) {
-    const today = new Date().toISOString().slice(0,10);
-    document.getElementById('stat-total').textContent     = data.length;
-    document.getElementById('stat-today').textContent     = data.filter(r => r.created_at?.startsWith(today)).length;
-    document.getElementById('stat-marketing').textContent = data.filter(r => r.marketing_consent).length;
-  }
-
-  function filterTable() {
-    const q = document.getElementById('search-input').value.toLowerCase();
-    const filtered = allData.filter(r =>
-      r.name?.toLowerCase().includes(q) ||
-      r.whatsapp?.includes(q) ||
-      r.instagram?.toLowerCase().includes(q)
-    );
-    renderTable(filtered);
-  }
-
-  function formatDate(iso) {
-    if (!iso) return '—';
-    const d = new Date(iso);
-    return d.toLocaleDateString('pt-BR') + ' ' + d.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
-  }
-
-  function esc(s) {
-    return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
-  }
-
-  function exportCSV() {
-    if (!allData.length) { alert('Nenhum dado para exportar.'); return; }
-    const headers = ['#', 'Nome', 'WhatsApp', 'Instagram', 'Cupom', 'Marketing', 'Data'];
-    const rows = allData.map((r, i) => [
-      i + 1, r.name, r.whatsapp, r.instagram, r.coupon_code,
-      r.marketing_consent ? 'Sim' : 'Não', formatDate(r.created_at)
-    ]);
-    const csv = [headers, ...rows].map(r => r.map(c => `"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n');
-    const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url; a.download = `ivonne-clientes-${new Date().toISOString().slice(0,10)}.csv`;
-    a.click(); URL.revokeObjectURL(url);
-  }
-
-  function openModal(id, name, coupon) {
-    editingId = id;
-    document.getElementById('modal-client-name').textContent = `Cliente: ${name}`;
-    document.getElementById('modal-coupon-input').value = coupon;
-    document.getElementById('edit-modal').classList.add('open');
-  }
-
-  function closeModal() {
-    editingId = null;
-    document.getElementById('edit-modal').classList.remove('open');
-  }
-
-  async function confirmEdit() {
-    const newCode = document.getElementById('modal-coupon-input').value.trim().toUpperCase();
-    if (!newCode || !editingId) return;
-    try {
-      const res = await fetch(`${SUPABASE_URL}/rest/v1/coupon_registrations?id=eq.${editingId}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-          'apikey': SUPABASE_KEY,
-          'Authorization': `Bearer ${SUPABASE_KEY}`,
-          'Prefer': 'return=minimal'
-        },
-        body: JSON.stringify({ coupon_code: newCode })
-      });
-      if (!res.ok) throw new Error(await res.text());
-      closeModal();
-      loadRegistrations();
-    } catch (err) {
-      alert('Erro ao salvar: ' + err.message);
     }
-  }
 
-  document.getElementById('edit-modal').addEventListener('click', function(e) {
-    if (e.target === this) closeModal();
-  });
-</script>
+    function updateStats(data) {
+      const today = new Date().toISOString().slice(0, 10);
+      document.getElementById('stat-total').textContent = data.length;
+      document.getElementById('stat-today').textContent = data.filter(r => r.created_at?.startsWith(today)).length;
+      document.getElementById('stat-marketing').textContent = data.filter(r => r.marketing_consent).length;
+    }
+
+    function filterTable() {
+      const q = document.getElementById('search-input').value.toLowerCase();
+      const filtered = allData.filter(r =>
+        r.name?.toLowerCase().includes(q) ||
+        r.whatsapp?.includes(q) ||
+        r.instagram?.toLowerCase().includes(q)
+      );
+      renderTable(filtered);
+    }
+
+    function formatDate(iso) {
+      if (!iso) return '—';
+      const d = new Date(iso);
+      return d.toLocaleDateString('pt-BR') + ' ' + d.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+    }
+
+    function esc(s) {
+      return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+
+    function exportCSV() {
+      if (!allData.length) { alert('Nenhum dado para exportar.'); return; }
+      const headers = ['#', 'Nome', 'WhatsApp', 'Instagram', 'Cupom', 'Marketing', 'Data'];
+      const rows = allData.map((r, i) => [
+        i + 1, r.name, r.whatsapp, r.instagram, r.coupon_code,
+        r.marketing_consent ? 'Sim' : 'Não', formatDate(r.created_at)
+      ]);
+      const csv = [headers, ...rows].map(r => r.map(c => `"${String(c).replace(/"/g, '""')}"`).join(',')).join('\n');
+      const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = `ivonne-clientes-${new Date().toISOString().slice(0, 10)}.csv`;
+      a.click(); URL.revokeObjectURL(url);
+    }
+
+    function openModal(id, name, coupon) {
+      editingId = id;
+      document.getElementById('modal-client-name').textContent = `Cliente: ${name}`;
+      document.getElementById('modal-coupon-input').value = coupon;
+      document.getElementById('edit-modal').classList.add('open');
+    }
+
+    function closeModal() {
+      editingId = null;
+      document.getElementById('edit-modal').classList.remove('open');
+    }
+
+    async function confirmEdit() {
+      const newCode = document.getElementById('modal-coupon-input').value.trim().toUpperCase();
+      if (!newCode || !editingId) return;
+      try {
+        const res = await fetch(`${SUPABASE_URL}/rest/v1/coupon_registrations?id=eq.${editingId}`, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+            'apikey': SUPABASE_KEY,
+            'Authorization': `Bearer ${SUPABASE_KEY}`,
+            'Prefer': 'return=minimal'
+          },
+          body: JSON.stringify({ coupon_code: newCode })
+        });
+        if (!res.ok) throw new Error(await res.text());
+        closeModal();
+        loadRegistrations();
+      } catch (err) {
+        alert('Erro ao salvar: ' + err.message);
+      }
+    }
+
+    document.getElementById('edit-modal').addEventListener('click', function (e) {
+      if (e.target === this) closeModal();
+    });
+  </script>
 </body>
+
 </html>
