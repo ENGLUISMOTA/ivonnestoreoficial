@@ -1,0 +1,25 @@
+# ─── Variáveis de ambiente (NUNCA enviar ao repositório) ───
+.env
+.env.local
+.env.*.local
+
+# ─── Arquivo gerado com credenciais (NUNCA enviar) ───
+env.js
+
+# ─── Sistemas operacionais ───
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ─── Editores ───
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# ─── Logs ───
+*.log
+npm-debug.log*
+
+# ─── Dependências ───
+node_modules/
